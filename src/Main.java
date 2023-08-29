@@ -6,7 +6,7 @@ public class Main {
         String name;
         String inputCurrency = null;
         String inputToCurrency = null;
-        String inputAmountString = null;
+        String inputAmountString;
 
         double inputToDollar = 1;
         double dollarToCurrency = 1;
