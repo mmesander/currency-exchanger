@@ -6,8 +6,10 @@ public class Main {
         String name;
         String inputCurrency = null;
         String inputToCurrency = null;
+        String inputAmount = null;
         boolean inputCurrencyLoop = true;
         boolean inputToCurrencyLoop = true;
+        boolean inputAmountLoop = true;
 
         System.out.println(" ");
         System.out.println("Super Ultra Mega Currency Exchanger Deluxe");
@@ -28,6 +30,7 @@ public class Main {
                 System.out.println("And don't forget, you're awesome you nameless bastard!");
                 inputCurrencyLoop = false;
                 inputToCurrencyLoop = false;
+                inputAmountLoop = false;
                 break;
             } else {
                 break;
@@ -61,10 +64,10 @@ public class Main {
                     System.out.println("--------------------------------------------");
                     inputCurrencyLoop = false;
                     inputToCurrencyLoop = false;
+                    inputAmountLoop = false;
                     break;
                 }
             }
-
         }
 
         while (inputToCurrencyLoop) {
@@ -74,9 +77,8 @@ public class Main {
             System.out.println("Enter your currency or enter 'Quit' to stop the program: ");
             System.out.println("--------------------------------------------");
 
-
-            Scanner scanToCurrency = new Scanner(System.in);
-            inputToCurrency = scanToCurrency.nextLine();
+            Scanner scanCurrency = new Scanner(System.in);
+            inputToCurrency = scanCurrency.nextLine();
 
             for (int i = 0; i < currencies.length; i++) {
                 if (inputToCurrency.equalsIgnoreCase(currencies[i])) {
@@ -87,15 +89,29 @@ public class Main {
                     System.out.println("This is not a valid currency. Please choose between Dollar, Euro, Pound, Yuan, Roebel, Baht");
                     System.out.println("Enter your currency or enter 'Quit' to stop the program: ");
                     System.out.println("--------------------------------------------");
-                } else if (inputCurrency.equalsIgnoreCase(currencies[6])) {
+                } else if (inputToCurrency.equalsIgnoreCase(currencies[6])) {
                     System.out.println(" ");
                     System.out.println("Thank you for using this program.");
                     System.out.println("And don't forget, you're awesome " + name);
                     System.out.println("--------------------------------------------");
                     inputToCurrencyLoop = false;
+                    inputAmountLoop = false;
                     break;
                 }
             }
+        }
+
+        while (inputAmountLoop) {
+            System.out.println(" ");
+            System.out.println("Enter the amount of " + inputCurrency " you would exchange for " + inputToCurrency);
+            System.out.println("Make sure that you use a . and not a ,");
+            System.out.println("Enter the amount of " + inputCurrency + " or enter 'Quit' to stop the program:");
+            System.out.println("--------------------------------------------");
+
+            Scanner scanAmount = new Scanner(System.in);
+            inputAmount = scanAmount.nextLine();
+
+
         }
 
 
