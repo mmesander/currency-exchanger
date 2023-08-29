@@ -6,7 +6,11 @@ public class Main {
         String name;
         String inputCurrency = null;
         String inputToCurrency = null;
-        String inputAmount = null;
+        String inputAmountString = null;
+
+        double inputToDollar = 1;
+        double dollarToCurrency = 1;
+
         boolean inputCurrencyLoop = true;
         boolean inputToCurrencyLoop = true;
         boolean inputAmountLoop = true;
@@ -101,20 +105,62 @@ public class Main {
             }
         }
 
-        while (inputAmountLoop) {
+        if (inputAmountLoop) {
             System.out.println(" ");
-            System.out.println("Enter the amount of " + inputCurrency " you would exchange for " + inputToCurrency);
+            System.out.println("Enter the amount of " + inputCurrency + " you would exchange for " + inputToCurrency);
             System.out.println("Make sure that you use a . and not a ,");
             System.out.println("Enter the amount of " + inputCurrency + " or enter 'Quit' to stop the program:");
             System.out.println("--------------------------------------------");
-
-            Scanner scanAmount = new Scanner(System.in);
-            inputAmount = scanAmount.nextLine();
-
-
         }
 
+        while (inputAmountLoop) {
+            if (inputCurrency.equalsIgnoreCase("DOLLAR")) {
+                inputToDollar = 1.00;
+            } else if (inputCurrency.equalsIgnoreCase("EURO")) {
+                inputToDollar = 1.080122399;
+            } else if (inputCurrency.equalsIgnoreCase("POUND")) {
+                inputToDollar = 1.257730325;
+            } else if (inputCurrency.equalsIgnoreCase("YUAN")) {
+                inputToDollar = 0.137082071;
+            } else if (inputCurrency.equalsIgnoreCase("ROEBEL")) {
+                inputToDollar = 0.010388854;
+            } else if (inputCurrency.equalsIgnoreCase("BAHT")) {
+                inputToDollar = 0.028392959;
+            }
 
+            if (inputToCurrency.equalsIgnoreCase("DOLLAR")) {
+                dollarToCurrency = 1;
+            } else if (inputToCurrency.equalsIgnoreCase("EURO")) {
+                dollarToCurrency = 0.925821;
+            } else if (inputToCurrency.equalsIgnoreCase("POUND")) {
+                dollarToCurrency = 0.795083;
+            } else if (inputToCurrency.equalsIgnoreCase("YUAN")) {
+                dollarToCurrency = 7.2949;
+            } else if (inputToCurrency.equalsIgnoreCase("ROEBEL")) {
+                dollarToCurrency = 96.257006;
+            } else if (inputToCurrency.equalsIgnoreCase("BAHT")) {
+                dollarToCurrency = 35.224;
+            }
 
+            Scanner scanAmount = new Scanner(System.in);
+            inputAmountString = scanAmount.nextLine();
+
+            if (inputAmountString.contains(",")) {
+                System.out.println(" ");
+                System.out.println("Make sure that you use a . and not a ,");
+                System.out.println("Enter the amount of " + inputCurrency + " or enter 'Quit' to stop the program:");
+                System.out.println("--------------------------------------------");
+            } else {
+                double inputAmount = Double.parseDouble(inputAmountString);
+                double dollars = inputAmount * inputToDollar;
+                double currency = dollars * dollarToCurrency;
+                System.out.println(" ");
+                System.out.println("--------------------------------------------");
+                System.out.println(inputAmountString + " " + inputCurrency + " is worth " + String.format("%.2f", currency) + " " + inputToCurrency + "!");
+                System.out.println("Thanks for using this program and have a nice day " + name + "!");
+                inputAmountLoop = false;
+                break;
+            }
+        }
     }
 }
