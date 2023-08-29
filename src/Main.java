@@ -3,10 +3,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         String[] currencies = {"Dollar", "Euro", "Pound", "Yuan", "Roebel", "Baht", "Quit"};
-        String name = null;
+        String name;
         String inputCurrency = null;
         String inputToCurrency = null;
-        boolean inputNameLoop = true;
         boolean inputCurrencyLoop = true;
         boolean inputToCurrencyLoop = true;
 
