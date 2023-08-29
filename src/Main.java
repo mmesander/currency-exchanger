@@ -113,6 +113,12 @@ public class Main {
             System.out.println("--------------------------------------------");
         }
 
+        // Momenteel gebruik gemaakt van deze website:
+        // https://www.forbes.com/advisor/money-transfer/currency-converter/usd-eur/?amount=1
+        // Data van raadplegen: 29-08-2023
+        // Doorgroeimogelijkheid, API:
+        // https://currencyapi.com/
+
         while (inputAmountLoop) {
             if (inputCurrency.equalsIgnoreCase("DOLLAR")) {
                 inputToDollar = 1.00;
